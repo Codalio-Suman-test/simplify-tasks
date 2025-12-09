@@ -982,13 +982,19 @@ const api = {
     "x-rhino": {
       "modules": {
         "rhino": {
-          "version": "0.30.0.alpha.29",
+          "version": "0.26.0.beta.4",
           "authOwner": "user",
           "baseOwner": "user",
           "oauth": [
-
+            {
+              "name": "google_oauth2",
+              "path": "/api/auth/omniauth/google_oauth2"
+            }
           ],
           "allow_signup": true
+        },
+        "rhino_subscriptions": {
+          "version": "0.26.0.beta.4"
         }
       }
     }
