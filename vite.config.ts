@@ -41,10 +41,29 @@ export default defineConfig(async ({ mode }) => {
     : {};
 
   // Only load TanStackRouterVite when not running tests to avoid version mismatch issues
-  const isTest = process.env.VITEST !== undefined || process.env.NODE_ENV === 'test';
+  // Check multiple environment variables to detect test mode
+  const isTest = 
+    process.env.VITEST !== undefined || 
+    process.env.NODE_ENV === 'test' || 
+    process.env.RAILS_ENV === 'test' ||
+    mode === 'test';
+
+  // Conditionally load TanStack Router plugin, with error handling for test environments
+  let tanStackRouterPlugin = null;
+  if (!isTest) {
+    try {
+      const routerPlugin = await import('@tanstack/router-plugin/vite');
+      tanStackRouterPlugin = routerPlugin.TanStackRouterVite();
+    } catch (error) {
+      // Silently fail in test environments or if plugin is unavailable
+      if (process.env.NODE_ENV !== 'test' && process.env.RAILS_ENV !== 'test') {
+        console.warn('Failed to load TanStack Router plugin:', error);
+      }
+    }
+  }
 
   const plugins = [
-    ...(isTest ? [] : [(await import('@tanstack/router-plugin/vite')).TanStackRouterVite()]),
+    ...(tanStackRouterPlugin ? [tanStackRouterPlugin] : []),
     ViteRails(),
     RhinoProjectVite({ enableJsxInJs: false }),
     react(),
