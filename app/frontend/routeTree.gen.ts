@@ -37,19 +37,19 @@ import { Route as AuthenticatedOwnerModelIdEditImport } from './routes/_authenti
 // Create Virtual Routes
 
 const AuthenticatedOwnerDesignLazyImport = createFileRoute(
-  '/_authenticated/$owner/design',
+  '/_authenticated/$owner/design'
 )();
 const AuthenticatedOwnerDesignIndexLazyImport = createFileRoute(
-  '/_authenticated/$owner/design/',
+  '/_authenticated/$owner/design/'
 )();
 const AuthenticatedOwnerDesignTypographyLazyImport = createFileRoute(
-  '/_authenticated/$owner/design/typography',
+  '/_authenticated/$owner/design/typography'
 )();
 const AuthenticatedOwnerDesignTablesLazyImport = createFileRoute(
-  '/_authenticated/$owner/design/tables',
+  '/_authenticated/$owner/design/tables'
 )();
 const AuthenticatedOwnerDesignFormsLazyImport = createFileRoute(
-  '/_authenticated/$owner/design/forms',
+  '/_authenticated/$owner/design/forms'
 )();
 
 // Create/Update Routes
@@ -57,186 +57,186 @@ const AuthenticatedOwnerDesignFormsLazyImport = createFileRoute(
 const AuthRoute = AuthImport.update({
   id: '/auth',
   path: '/auth',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any);
 
 const AuthenticatedRoute = AuthenticatedImport.update({
   id: '/_authenticated',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any);
 
 const AuthenticatedIndexRoute = AuthenticatedIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AuthenticatedRoute,
+  getParentRoute: () => AuthenticatedRoute
 } as any);
 
 const AuthSignupRoute = AuthSignupImport.update({
   id: '/signup',
   path: '/signup',
-  getParentRoute: () => AuthRoute,
+  getParentRoute: () => AuthRoute
 } as any);
 
 const AuthSigninRoute = AuthSigninImport.update({
   id: '/signin',
   path: '/signin',
-  getParentRoute: () => AuthRoute,
+  getParentRoute: () => AuthRoute
 } as any);
 
 const AuthResetPasswordRoute = AuthResetPasswordImport.update({
   id: '/reset-password',
   path: '/reset-password',
-  getParentRoute: () => AuthRoute,
+  getParentRoute: () => AuthRoute
 } as any);
 
 const AuthenticatedOwnerRoute = AuthenticatedOwnerImport.update({
   id: '/$owner',
   path: '/$owner',
-  getParentRoute: () => AuthenticatedRoute,
+  getParentRoute: () => AuthenticatedRoute
 } as any);
 
 const AuthenticatedOwnerIndexRoute = AuthenticatedOwnerIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AuthenticatedOwnerRoute,
+  getParentRoute: () => AuthenticatedOwnerRoute
 } as any);
 
 const AuthenticatedOwnerDesignLazyRoute =
   AuthenticatedOwnerDesignLazyImport.update({
     id: '/design',
     path: '/design',
-    getParentRoute: () => AuthenticatedOwnerRoute,
+    getParentRoute: () => AuthenticatedOwnerRoute
   } as any).lazy(() =>
-    import('./routes/_authenticated/$owner/design.lazy').then((d) => d.Route),
+    import('./routes/_authenticated/$owner/design.lazy').then((d) => d.Route)
   );
 
 const AuthenticatedOwnerSettingsRoute = AuthenticatedOwnerSettingsImport.update(
   {
     id: '/settings',
     path: '/settings',
-    getParentRoute: () => AuthenticatedOwnerRoute,
-  } as any,
+    getParentRoute: () => AuthenticatedOwnerRoute
+  } as any
 );
 
 const AuthenticatedOwnerModelRoute = AuthenticatedOwnerModelImport.update({
   id: '/$model',
   path: '/$model',
-  getParentRoute: () => AuthenticatedOwnerRoute,
+  getParentRoute: () => AuthenticatedOwnerRoute
 } as any);
 
 const AuthenticatedOwnerDesignIndexLazyRoute =
   AuthenticatedOwnerDesignIndexLazyImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute,
+    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute
   } as any).lazy(() =>
     import('./routes/_authenticated/$owner/design/index.lazy').then(
-      (d) => d.Route,
-    ),
+      (d) => d.Route
+    )
   );
 
 const AuthenticatedOwnerSettingsIndexRoute =
   AuthenticatedOwnerSettingsIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedOwnerSettingsRoute,
+    getParentRoute: () => AuthenticatedOwnerSettingsRoute
   } as any);
 
 const AuthenticatedOwnerModelIndexRoute =
   AuthenticatedOwnerModelIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedOwnerModelRoute,
+    getParentRoute: () => AuthenticatedOwnerModelRoute
   } as any);
 
 const AuthenticatedOwnerDesignTypographyLazyRoute =
   AuthenticatedOwnerDesignTypographyLazyImport.update({
     id: '/typography',
     path: '/typography',
-    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute,
+    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute
   } as any).lazy(() =>
     import('./routes/_authenticated/$owner/design/typography.lazy').then(
-      (d) => d.Route,
-    ),
+      (d) => d.Route
+    )
   );
 
 const AuthenticatedOwnerDesignTablesLazyRoute =
   AuthenticatedOwnerDesignTablesLazyImport.update({
     id: '/tables',
     path: '/tables',
-    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute,
+    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute
   } as any).lazy(() =>
     import('./routes/_authenticated/$owner/design/tables.lazy').then(
-      (d) => d.Route,
-    ),
+      (d) => d.Route
+    )
   );
 
 const AuthenticatedOwnerDesignFormsLazyRoute =
   AuthenticatedOwnerDesignFormsLazyImport.update({
     id: '/forms',
     path: '/forms',
-    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute,
+    getParentRoute: () => AuthenticatedOwnerDesignLazyRoute
   } as any).lazy(() =>
     import('./routes/_authenticated/$owner/design/forms.lazy').then(
-      (d) => d.Route,
-    ),
+      (d) => d.Route
+    )
   );
 
 const AuthenticatedOwnerSettingsSubscriptionRoute =
   AuthenticatedOwnerSettingsSubscriptionImport.update({
     id: '/subscription',
     path: '/subscription',
-    getParentRoute: () => AuthenticatedOwnerSettingsRoute,
+    getParentRoute: () => AuthenticatedOwnerSettingsRoute
   } as any);
 
 const AuthenticatedOwnerSettingsAccessRoute =
   AuthenticatedOwnerSettingsAccessImport.update({
     id: '/access',
     path: '/access',
-    getParentRoute: () => AuthenticatedOwnerSettingsRoute,
+    getParentRoute: () => AuthenticatedOwnerSettingsRoute
   } as any);
 
 const AuthenticatedOwnerAccountSettingsRoute =
   AuthenticatedOwnerAccountSettingsImport.update({
     id: '/account/settings',
     path: '/account/settings',
-    getParentRoute: () => AuthenticatedOwnerRoute,
+    getParentRoute: () => AuthenticatedOwnerRoute
   } as any);
 
 const AuthenticatedOwnerModelNewRoute = AuthenticatedOwnerModelNewImport.update(
   {
     id: '/new',
     path: '/new',
-    getParentRoute: () => AuthenticatedOwnerModelRoute,
-  } as any,
+    getParentRoute: () => AuthenticatedOwnerModelRoute
+  } as any
 );
 
 const AuthenticatedOwnerAccountSettingsIndexRoute =
   AuthenticatedOwnerAccountSettingsIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedOwnerAccountSettingsRoute,
+    getParentRoute: () => AuthenticatedOwnerAccountSettingsRoute
   } as any);
 
 const AuthenticatedOwnerModelIdIndexRoute =
   AuthenticatedOwnerModelIdIndexImport.update({
     id: '/$id/',
     path: '/$id/',
-    getParentRoute: () => AuthenticatedOwnerModelRoute,
+    getParentRoute: () => AuthenticatedOwnerModelRoute
   } as any);
 
 const AuthenticatedOwnerAccountSettingsPasswordRoute =
   AuthenticatedOwnerAccountSettingsPasswordImport.update({
     id: '/password',
     path: '/password',
-    getParentRoute: () => AuthenticatedOwnerAccountSettingsRoute,
+    getParentRoute: () => AuthenticatedOwnerAccountSettingsRoute
   } as any);
 
 const AuthenticatedOwnerModelIdEditRoute =
   AuthenticatedOwnerModelIdEditImport.update({
     id: '/$id/edit',
     path: '/$id/edit',
-    getParentRoute: () => AuthenticatedOwnerModelRoute,
+    getParentRoute: () => AuthenticatedOwnerModelRoute
   } as any);
 
 // Populate the FileRoutesByPath interface
@@ -435,12 +435,12 @@ const AuthenticatedOwnerModelRouteChildren: AuthenticatedOwnerModelRouteChildren
     AuthenticatedOwnerModelNewRoute: AuthenticatedOwnerModelNewRoute,
     AuthenticatedOwnerModelIndexRoute: AuthenticatedOwnerModelIndexRoute,
     AuthenticatedOwnerModelIdEditRoute: AuthenticatedOwnerModelIdEditRoute,
-    AuthenticatedOwnerModelIdIndexRoute: AuthenticatedOwnerModelIdIndexRoute,
+    AuthenticatedOwnerModelIdIndexRoute: AuthenticatedOwnerModelIdIndexRoute
   };
 
 const AuthenticatedOwnerModelRouteWithChildren =
   AuthenticatedOwnerModelRoute._addFileChildren(
-    AuthenticatedOwnerModelRouteChildren,
+    AuthenticatedOwnerModelRouteChildren
   );
 
 interface AuthenticatedOwnerSettingsRouteChildren {
@@ -455,12 +455,12 @@ const AuthenticatedOwnerSettingsRouteChildren: AuthenticatedOwnerSettingsRouteCh
       AuthenticatedOwnerSettingsAccessRoute,
     AuthenticatedOwnerSettingsSubscriptionRoute:
       AuthenticatedOwnerSettingsSubscriptionRoute,
-    AuthenticatedOwnerSettingsIndexRoute: AuthenticatedOwnerSettingsIndexRoute,
+    AuthenticatedOwnerSettingsIndexRoute: AuthenticatedOwnerSettingsIndexRoute
   };
 
 const AuthenticatedOwnerSettingsRouteWithChildren =
   AuthenticatedOwnerSettingsRoute._addFileChildren(
-    AuthenticatedOwnerSettingsRouteChildren,
+    AuthenticatedOwnerSettingsRouteChildren
   );
 
 interface AuthenticatedOwnerDesignLazyRouteChildren {
@@ -479,12 +479,12 @@ const AuthenticatedOwnerDesignLazyRouteChildren: AuthenticatedOwnerDesignLazyRou
     AuthenticatedOwnerDesignTypographyLazyRoute:
       AuthenticatedOwnerDesignTypographyLazyRoute,
     AuthenticatedOwnerDesignIndexLazyRoute:
-      AuthenticatedOwnerDesignIndexLazyRoute,
+      AuthenticatedOwnerDesignIndexLazyRoute
   };
 
 const AuthenticatedOwnerDesignLazyRouteWithChildren =
   AuthenticatedOwnerDesignLazyRoute._addFileChildren(
-    AuthenticatedOwnerDesignLazyRouteChildren,
+    AuthenticatedOwnerDesignLazyRouteChildren
   );
 
 interface AuthenticatedOwnerAccountSettingsRouteChildren {
@@ -497,12 +497,12 @@ const AuthenticatedOwnerAccountSettingsRouteChildren: AuthenticatedOwnerAccountS
     AuthenticatedOwnerAccountSettingsPasswordRoute:
       AuthenticatedOwnerAccountSettingsPasswordRoute,
     AuthenticatedOwnerAccountSettingsIndexRoute:
-      AuthenticatedOwnerAccountSettingsIndexRoute,
+      AuthenticatedOwnerAccountSettingsIndexRoute
   };
 
 const AuthenticatedOwnerAccountSettingsRouteWithChildren =
   AuthenticatedOwnerAccountSettingsRoute._addFileChildren(
-    AuthenticatedOwnerAccountSettingsRouteChildren,
+    AuthenticatedOwnerAccountSettingsRouteChildren
   );
 
 interface AuthenticatedOwnerRouteChildren {
@@ -520,7 +520,7 @@ const AuthenticatedOwnerRouteChildren: AuthenticatedOwnerRouteChildren = {
     AuthenticatedOwnerDesignLazyRouteWithChildren,
   AuthenticatedOwnerIndexRoute: AuthenticatedOwnerIndexRoute,
   AuthenticatedOwnerAccountSettingsRoute:
-    AuthenticatedOwnerAccountSettingsRouteWithChildren,
+    AuthenticatedOwnerAccountSettingsRouteWithChildren
 };
 
 const AuthenticatedOwnerRouteWithChildren =
@@ -533,11 +533,11 @@ interface AuthenticatedRouteChildren {
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedOwnerRoute: AuthenticatedOwnerRouteWithChildren,
-  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute
 };
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
-  AuthenticatedRouteChildren,
+  AuthenticatedRouteChildren
 );
 
 interface AuthRouteChildren {
@@ -549,7 +549,7 @@ interface AuthRouteChildren {
 const AuthRouteChildren: AuthRouteChildren = {
   AuthResetPasswordRoute: AuthResetPasswordRoute,
   AuthSigninRoute: AuthSigninRoute,
-  AuthSignupRoute: AuthSignupRoute,
+  AuthSignupRoute: AuthSignupRoute
 };
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren);
@@ -719,7 +719,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
-  AuthRoute: AuthRouteWithChildren,
+  AuthRoute: AuthRouteWithChildren
 };
 
 export const routeTree = rootRoute

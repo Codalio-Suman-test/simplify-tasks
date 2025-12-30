@@ -72,7 +72,9 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint app/frontend cypress --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint app/frontend cypress --fix",
     "prettier-check": "prettier --check app/frontend cypress",
+    "prettier:fix": "prettier --write app/frontend cypress",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   }
