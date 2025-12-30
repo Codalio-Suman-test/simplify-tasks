@@ -5,7 +5,6 @@ import { RhinoProjectVite } from '@rhino-project/vite-plugin-rhino';
 import ViteRails from 'vite-plugin-rails';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 
 const execAsync = promisify(exec);
 
@@ -33,13 +32,25 @@ function openApiTypescriptPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
   // https://main.vitejs.dev/config/#using-environment-variables-in-config
   const env = loadEnv(mode, process.cwd(), '');
 
   const hmr = env.VITE_RUBY_HMR_CLIENT_PORT
     ? { clientPort: Number(env.VITE_RUBY_HMR_CLIENT_PORT) }
     : {};
+
+  // Only load TanStackRouterVite when not running tests to avoid version mismatch issues
+  const isTest = process.env.VITEST !== undefined || process.env.NODE_ENV === 'test';
+
+  const plugins = [
+    ...(isTest ? [] : [(await import('@tanstack/router-plugin/vite')).TanStackRouterVite()]),
+    ViteRails(),
+    RhinoProjectVite({ enableJsxInJs: false }),
+    react(),
+    ViteEslint({ eslintOptions: { cache: false } }),
+    openApiTypescriptPlugin()
+  ];
 
   return {
     resolve: {
@@ -50,14 +61,7 @@ export default defineConfig(({ mode }) => {
       hmr
     },
 
-    plugins: [
-      TanStackRouterVite(),
-      ViteRails(),
-      RhinoProjectVite({ enableJsxInJs: false }),
-      react(),
-      ViteEslint({ eslintOptions: { cache: false } }),
-      openApiTypescriptPlugin()
-    ],
+    plugins,
 
     test: {
       environment: 'jsdom',
