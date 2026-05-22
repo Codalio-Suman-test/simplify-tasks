@@ -21,5 +21,12 @@ Rhino.setup do |config|
 
   # The list of resources exposed in the API
   config.resources += [ "User", "Account" ]
-  config.resources += ["Organization", "UsersRole", "Role", "UsersRoleInvite"]
+  config.resources += [ "Organization", "UsersRole", "Role", "UsersRoleInvite" ]
+  config.resources += [ "TodoList" ]
+  config.resources += [ "TodoItem" ]
+  config.resources += [ "TodoComment" ]
+  config.resources += [ "Reminder" ]
+  config.resources += [ "NotificationSetting" ]
+  config.resources += [ "SystemSetting" ]
+  config.resources += [ "AuditLog" ]
 end
