@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_22_162425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -73,6 +73,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "audit_logs", force: :cascade do |t|
+    t.string "target_model"
+    t.string "target_identifier"
+    t.string "action", null: false
+    t.json "details"
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_audit_logs_on_organization_id"
+    t.index ["user_id"], name: "index_audit_logs_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -83,6 +96,21 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "notification_settings", force: :cascade do |t|
+    t.boolean "reminders_enabled", default: true
+    t.integer "default_reminder_minutes_before", default: 30
+    t.integer "default_delivery_method", default: 0
+    t.json "channels"
+    t.string "sound"
+    t.boolean "vibration_enabled", default: true
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_notification_settings_on_organization_id"
+    t.index ["user_id"], name: "index_notification_settings_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -111,6 +139,24 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.datetime "remind_at", null: false
+    t.integer "delivery_method", default: 0
+    t.string "recurrence"
+    t.integer "occurrences"
+    t.date "end_date"
+    t.datetime "snoozed_until"
+    t.boolean "enabled", default: true
+    t.bigint "todo_item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_reminders_on_organization_id"
+    t.index ["todo_item_id"], name: "index_reminders_on_todo_item_id"
+    t.index ["user_id"], name: "index_reminders_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -288,6 +334,63 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
     t.index ["target_type", "target_id"], name: "index_subscriptions_on_target"
   end
 
+  create_table "system_settings", force: :cascade do |t|
+    t.string "key", null: false
+    t.json "value"
+    t.text "description"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_system_settings_on_key", unique: true
+    t.index ["organization_id"], name: "index_system_settings_on_organization_id"
+  end
+
+  create_table "todo_comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "todo_item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_todo_comments_on_organization_id"
+    t.index ["todo_item_id"], name: "index_todo_comments_on_todo_item_id"
+    t.index ["user_id"], name: "index_todo_comments_on_user_id"
+  end
+
+  create_table "todo_items", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.date "due_date"
+    t.time "due_time"
+    t.boolean "completed", default: false
+    t.datetime "completed_at"
+    t.integer "priority", default: 0
+    t.integer "position"
+    t.json "metadata"
+    t.bigint "organization_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "todo_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_todo_items_on_organization_id"
+    t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
+    t.index ["user_id"], name: "index_todo_items_on_user_id"
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "visibility", default: 0
+    t.integer "position"
+    t.bigint "organization_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "organization_id"], name: "index_todo_lists_on_name_and_organization_id", unique: true
+    t.index ["organization_id"], name: "index_todo_lists_on_organization_id"
+    t.index ["user_id"], name: "index_todo_lists_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -350,12 +453,28 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_22_162239) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "audit_logs", "organizations"
+  add_foreign_key "audit_logs", "users"
+  add_foreign_key "notification_settings", "organizations"
+  add_foreign_key "notification_settings", "users"
+  add_foreign_key "reminders", "organizations"
+  add_foreign_key "reminders", "todo_items"
+  add_foreign_key "reminders", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "system_settings", "organizations"
+  add_foreign_key "todo_comments", "organizations"
+  add_foreign_key "todo_comments", "todo_items"
+  add_foreign_key "todo_comments", "users"
+  add_foreign_key "todo_items", "organizations"
+  add_foreign_key "todo_items", "todo_lists"
+  add_foreign_key "todo_items", "users"
+  add_foreign_key "todo_lists", "organizations"
+  add_foreign_key "todo_lists", "users"
   add_foreign_key "users_role_invites", "organizations"
   add_foreign_key "users_role_invites", "roles"
   add_foreign_key "users_roles", "organizations"
