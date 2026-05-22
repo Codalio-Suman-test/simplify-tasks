@@ -283,7 +283,7 @@ GEM
     marcel (1.0.4)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
+    mini_portile2 (2.8.9)
     minitest (5.25.5)
     mission_control-jobs (1.0.1)
       actioncable (>= 7.1)
@@ -310,18 +310,18 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.6)
+    nokogiri (1.19.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.6-aarch64-linux-gnu)
+    nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.6-arm-linux-gnu)
+    nokogiri (1.19.3-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.6-arm64-darwin)
+    nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-darwin)
+    nokogiri (1.19.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-gnu)
+    nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -724,6 +724,7 @@ CHECKSUMS
   bootsnap (1.18.4) sha256=ac4c42af397f7ee15521820198daeff545e4c360d2772c601fbdc2c07d92af55
   brakeman (7.0.0) sha256=1a0122b0c70f17519a61548a53a332c0acc19e3aa10b445e15e025a4b13b8577
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
+  bundler (4.0.12) sha256=7f8b757d28dfb636e7b24fba2344ac6dd13b5b24f4b46d62573d483f211825ac
   character_set (1.8.0) sha256=2b7317462adaedff0bd1576ae86d71bc5efe133a5d0b7c257021b00fe3153f51
   commonmarker (2.0.4) sha256=3dd74c8081a46f992a1d9b7fac796583468d41dd8ea6806a84ca08ff05ae13cf
   commonmarker (2.0.4-aarch64-linux) sha256=ddb421a7e97c4b5c6abdc8302492389e612501e33c550f72258f57c4a62bbfdc
@@ -800,7 +801,7 @@ CHECKSUMS
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
   mini_magick (4.13.2) sha256=71d6258e0e8a3d04a9a0a09784d5d857b403a198a51dd4f882510435eb95ddd9
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
-  mini_portile2 (2.8.8) sha256=8e47136cdac04ce81750bb6c09733b37895bf06962554e4b4056d78168d70a75
+  mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (5.25.5) sha256=391b6c6cb43a4802bfb7c93af1ebe2ac66a210293f4a3fb7db36f2fc7dc2c756
   mission_control-jobs (1.0.1) sha256=3bcccd10ed807a0d59c36054bab2be077e3ee37c48b0d67d25e25802cb0d79ca
   msgpack (1.7.2) sha256=59ab62fd8a4d0dfbde45009f87eb6f158ab2628a7c48886b0256f175166baaa8
@@ -811,12 +812,12 @@ CHECKSUMS
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-smtp (0.5.1) sha256=ed96a0af63c524fceb4b29b0d352195c30d82dd916a42f03c62a3a70e5b70736
   nio4r (2.7.4) sha256=d95dee68e0bb251b8ff90ac3423a511e3b784124e5db7ff5f4813a220ae73ca9
-  nokogiri (1.18.6) sha256=4d283431d7829719ea1287ca388f24c6ce343af736bbcbd1365cbdb83bce41a4
-  nokogiri (1.18.6-aarch64-linux-gnu) sha256=1b11f9a814068282cc2b47ebe61395b2a69d1918092d2ca3bd664074f72540e9
-  nokogiri (1.18.6-arm-linux-gnu) sha256=2da07a07ef4c9d9e9da809b3dc0937ed90b031e32c2c658d9918941b85d68b95
-  nokogiri (1.18.6-arm64-darwin) sha256=727a441d179d934b4b7c73e0e28e6723ee46463d96bb0cc6e2e33a13540962c4
-  nokogiri (1.18.6-x86_64-darwin) sha256=fb72568c97ccd90a8d68cb765b0ff0720b109bd62e3babbf372e854ef8fef995
-  nokogiri (1.18.6-x86_64-linux-gnu) sha256=df065db6ba6e1e80f76ef04f860fcf260cc24685125fe33cdc3d1572a1c66b71
+  nokogiri (1.19.3) sha256=78312cbac32a40c812780d9678221b79d51288eec00054c1a8d15f7ce05960e8
+  nokogiri (1.19.3-aarch64-linux-gnu) sha256=46b89e5d7b9e844c2ee360794240c6ea2a4e6fa0c5892a4ed487db621224b639
+  nokogiri (1.19.3-arm-linux-gnu) sha256=3919d5ffc334ad778a4a9eb88fda7dcb8b1fb58c8a52ac640c6dcd2f038e774f
+  nokogiri (1.19.3-arm64-darwin) sha256=71b9bd424b1b7abc18b05052a1a3cfd3627abdca62be280854cc411791357e42
+  nokogiri (1.19.3-x86_64-darwin) sha256=77f3fba57d46c53ab31e62fc6c28f705109d1bf6264356c76f132b2be5728d4d
+  nokogiri (1.19.3-x86_64-linux-gnu) sha256=2f5078620fe12e83669b5b17311b32532a8153d02eee7ad06948b926d6080976
   oauth2 (2.0.9) sha256=b21f9defcf52dc1610e0dfab4c868342173dcd707fd15c777d9f4f04e153f7fb
   omniauth (2.1.2) sha256=def03277298b8f8a5d3ff16cdb2eb5edb9bffed60ee7dda24cc0c89b3ae6a0ce
   omniauth-auth0 (3.1.1) sha256=3d9e83377b37394db077cf27082d29ccff93158f072d92fc59f1e88798c6c2b2
