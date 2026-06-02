@@ -112,7 +112,7 @@ GEM
     arel-helpers (2.16.0)
       activerecord (>= 3.1.0, < 8.1)
     ast (2.4.2)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
@@ -252,7 +252,7 @@ GEM
       regexp_parser (>= 2.6.2, < 3.0.0)
       regexp_property_values (~> 1.0)
     json (2.7.2)
-    jwt (2.10.1)
+    jwt (2.10.3)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -716,7 +716,7 @@ CHECKSUMS
   arctic_admin (4.3.1) sha256=88c813b4019a31576ee0e040f7b46a4ef63002e8307fb3449f9b375a7311bde4
   arel-helpers (2.16.0) sha256=97c959f81a43fa6456336a5f44a9975b1856088e53569453377669e6284557c6
   ast (2.4.2) sha256=1e280232e6a33754cde542bc5ef85520b74db2aac73ec14acef453784447cc12
-  base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bcrypt (3.1.20) sha256=8410f8c7b3ed54a3c00cd2456bf13917d695117f033218e2483b2e40b0784099
   benchmark (0.4.0) sha256=0f12f8c495545e3710c3e4f0480f63f06b4c842cc94cec7f33a956f5180e874a
   bigdecimal (3.1.9) sha256=2ffc742031521ad69c2dfc815a98e426a230a3d22aeac1995826a75dabfad8cc
@@ -786,7 +786,7 @@ CHECKSUMS
   jquery-rails (4.6.0) sha256=3c4e6bf47274340b44d836b8aa1b5472c6d451e2739af5ec094421f39025a7e2
   js_regex (3.11.1) sha256=9189fd333e4e4505ee3d90aae0c35a4574bd1709c7f5c6471bb49c4110ea1143
   json (2.7.2) sha256=1898b5cbc81cd36c0fd4d0b7ad2682c39fb07c5ff682fc6265f678f550d4982c
-  jwt (2.10.1) sha256=e6424ae1d813f63e761a04d6284e10e7ec531d6f701917fadcd0d9b2deaf1cc5
+  jwt (2.10.3) sha256=e4d9352fbc7309b1a7448c7dd713dfe4d8c47077af80759cdbed8f878ea0b484
   kaminari (1.2.2) sha256=c4076ff9adccc6109408333f87b5c4abbda5e39dc464bd4c66d06d9f73442a3e
   kaminari-actionview (1.2.2) sha256=1330f6fc8b59a4a4ef6a549ff8a224797289ebf7a3a503e8c1652535287cc909
   kaminari-activerecord (1.2.2) sha256=0dd3a67bab356a356f36b3b7236bcb81cef313095365befe8e98057dd2472430
