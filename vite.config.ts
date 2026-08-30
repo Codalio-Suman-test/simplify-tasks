@@ -77,6 +77,7 @@ export default defineConfig(async ({ mode }) => {
     },
 
     server: {
+      allowedHosts: ['.preview.codalio.com'],
       hmr
     },
 
